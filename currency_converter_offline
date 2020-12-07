@@ -1,0 +1,22 @@
+with open('currency_data.txt') as data:
+    lines = data.readlines()
+
+currency_dict = {}
+for line in lines:
+    new_data = line.split('\t')
+    currency_dict[new_data[0]] = new_data[1]
+
+
+print('Welcome \nThis program helps you convert Nepalese Rupees into international currency')
+print('Available options are:')
+# [print(item)for item in currency_dict.keys()]
+num = 1
+for item in currency_dict.keys():
+    print('%d)' % num, item)
+    num = num + 1
+
+amount = int(input('\nEnter the amount in NPR:'))
+currency = input('\nEnter the country that you want to convert it to:')
+# print(currency_dict[currency])--  gives the exchange rate of that particular currency name
+# for eg: 0.622084 if currency = indian rupee
+print(f"{amount} NPR is equal to nearly {round(amount * float(currency_dict[currency]))} {currency}")
